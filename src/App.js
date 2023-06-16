@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Board from './components/Board';
+import './App.css';
 
 function App() {
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
@@ -43,7 +44,7 @@ function App() {
   }
 
   const handleClick = (i) => {
-    const newHistory = history.slice(0, stepNumber.length + 1);
+    const newHistory = history.slice(0, stepNumber + 1);
     const newCurrent = newHistory[newHistory.length - 1];
     const selectedSquare = newCurrent.squares.slice();
     if (calculatorWinner(selectedSquare) || selectedSquare[i]) {
@@ -51,7 +52,7 @@ function App() {
     }
 
     selectedSquare[i] = xIsNext ? 'X' : 'O';
-    setHistory([...newHistory, { square: selectedSquare }]);
+    setHistory([...newHistory, { squares: selectedSquare }]);
     setXIsNext((current) => !current);
 
     setStepNumber(newHistory.length);
@@ -61,7 +62,9 @@ function App() {
     const desc = move ? 'Go to move #' + move : 'Go to game start';
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{desc}</button>
+        <button className='move-button' onClick={() => jumpTo(move)}>
+          {desc}
+        </button>
       </li>
     );
   });

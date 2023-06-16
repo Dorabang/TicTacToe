@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './Square.css';
 
 const Square = ({ value, onClick }) => {

@@ -4,11 +4,11 @@ import React from 'react';
 
 const Board = ({ squares, handleClick }) => {
   const renderSquare = (i) => {
-    return <Square value={squares} onClick={() => handleClick(i)} />;
+    return <Square value={squares[i]} onClick={() => handleClick(i)} />;
   };
 
   return (
-    <>
+    <div className='board-wrapper'>
       <div className='board-row'>
         {renderSquare(0)}
         {renderSquare(1)}
@@ -24,7 +24,7 @@ const Board = ({ squares, handleClick }) => {
         {renderSquare(7)}
         {renderSquare(8)}
       </div>
-    </>
+    </div>
   );
 };
 
